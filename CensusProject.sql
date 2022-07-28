@@ -43,6 +43,15 @@ SELECT
 FROM
       CensusProject..Dataset2;
 
+--state wise population
+SELECT 
+      State, SUM(population) AS Population 
+FROM
+      CensusProject..Dataset2
+GROUP BY 
+		State
+ORDER BY Population DESC;
+
 --Average growth of India
 
 SELECT 
@@ -50,7 +59,7 @@ SELECT
 FROM 
       CensusProject..Dataset1;
 
--------
+--Average growth of states
 
 SELECT 
        State, ROUND(AVG(growth)*100,5) AS avg_growth 
@@ -60,6 +69,12 @@ GROUP BY
          State 
 ORDER BY 
          avg_growth DESC;
+
+--Average sex ratio of India
+SELECT 
+      AVG(Sex_Ratio) AS avg_sex_ratio 
+FROM 
+      CensusProject..Dataset1;
 
 -- Average sex ratio of each state
 
@@ -72,7 +87,13 @@ GROUP BY
 ORDER BY 
          avg_sex_ratio DESC;
 
--- Average literacy rate
+-- Average literacy rate of India
+SELECT 
+      AVG(Literacy) AS avg_literacy 
+FROM 
+      CensusProject..Dataset1;
+
+-- Average literacy rate of states
 
 SELECT 
        State, ROUND(AVG(Literacy),5) AS avg_literacy_rate 
@@ -83,7 +104,7 @@ GROUP BY
 ORDER BY 
           avg_literacy_rate DESC;
 
-------------
+--States having literacy rate greater than 90%
 
 SELECT 
        State, ROUND(AVG(Literacy),5) AS avg_literacy_rate 
